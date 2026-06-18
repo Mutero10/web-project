@@ -4,33 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArchKenya | Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <body class="bg-light">
 
-    <h1> ARCHITECTURE IN KENYA </h1>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container text-center my-4">
+        <h1 class="fw-bold tracking-wide">ARCHITECTURE IN KENYA</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="indigenous.html">Indigenous</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="#">Swahili</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="#">Colonial</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="#">Modernism</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="#">Interactive Map</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="timeline.html">Timeline</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Architectural Eras
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="indigenous.html">Indigenous Spaces</a></li>
+                            <li><a class="dropdown-item" href="swahili.html">Swahili Coastal</a></li>
+                            <li><a class="dropdown-item" href="colonial.html">Colonial Heritage</a></li>
+                            <li><a class="dropdown-item" href="modernism.html">Modernism & Beyond</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="nairobi.html">Nairobi Spotlight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="interactive-map.html">Interactive Passport</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="document-landmark.html">Submit Landmark</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-   <p>Architecture is the art, science, and practice of designing and building structures, such as homes, offices, and bridges
-    It blends engineering with visual art, shaping the physical environment. Kenya exhibits a rich architectural heritage, from traditional Swahili coastal designs to colonial influences and modernist innovations.
-   </p> 
+    <div class="container my-4 text-center">
+        <p class="lead text-secondary">Architecture is the art, science, and practice of designing and building structures, such as homes, offices, and bridges.
+        It blends engineering with visual art, shaping the physical environment. Kenya exhibits a rich architectural heritage, from traditional Swahili coastal designs to colonial influences and modernist innovations.
+        </p> 
+    </div>
 
     <main class="container my-5">
         <div class="text-center mb-5">
@@ -76,8 +101,6 @@
             </div>
         </div>
     </main>
-
-    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
