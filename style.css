@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,500;0,700;1,400&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary: #d35400;      /* Terracotta */
+    --primary-hover: #a04000;
+    --secondary: #1e4620;    /* Forest Green */
+    --accent: #f39c12;       /* Warm Gold */
+    
+    /* Light Mode Variables */
+    --bg-color: #f9f6f0;     /* Soft warm cream */
+    --text-color: #2c3e50;
+    --card-bg: #ffffff;
+    --card-shadow: 0 10px 30px rgba(44, 62, 80, 0.06);
+    --nav-bg: #1a252f;
+    --border-color: #e5dec9;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Variables */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --nav-bg: #0d0d0d;
+    --border-color: #2d2d2d;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Custom Navigation Bar styling */
+.navbar {
+    background-color: var(--nav-bg) !important;
+    border-bottom: 2px solid var(--primary);
+    transition: var(--transition);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent) !important;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--card-shadow);
+}
+
+/* Premium Card Designs */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary);
+}
+
+/* Custom Badges */
+.badge {
+    padding: 0.5em 1em;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.bg-warning {
+    background-color: var(--accent) !important;
+    color: #fff !important;
+}
+
+.bg-danger {
+    background-color: var(--primary) !important;
+    color: #fff !important;
+}
+
+.bg-success {
+    background-color: var(--secondary) !important;
+    color: #fff !important;
+}
+
+/* Smooth Blockquotes */
+.blockquote {
+    background-color: var(--card-bg);
+    border-left: 5px solid var(--primary) !important;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Utility Animations */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
