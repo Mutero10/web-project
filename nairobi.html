@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchKenya | Nairobi Spotlight</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="index.html">🏢 ArchKenya</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="timeline.html">Timeline</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Architectural Eras
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="indigenous.html">Indigenous Spaces</a></li>
+                            <li><a class="dropdown-item" href="swahili.html">Swahili Coastal</a></li>
+                            <li><a class="dropdown-item" href="colonial.html">Colonial Heritage</a></li>
+                            <li><a class="dropdown-item" href="modernism.html">Modernism & Beyond</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="nairobi.html">Nairobi Spotlight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="document-landmark.html">Submit Landmark</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-success text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Nairobi Spotlight</h1>
+            <p class="lead mb-0">Discovering architectural landmarks inside the green city in the sun.</p>
+        </div>
+    </header>
+
+    <!-- Filter and Search controls -->
+    <main class="container my-5">
+        
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-8">
+                <!-- Search bar -->
+                <div class="mb-4">
+                    <input type="text" id="search-input" class="form-control form-control-lg shadow-sm" placeholder="Search landmarks by name or description...">
+                </div>
+                
+                <!-- Category buttons -->
+                <div class="d-flex flex-wrap justify-content-center gap-2" id="filter-buttons">
+                    <button class="btn btn-outline-success active px-3 py-2 fw-semibold filter-btn" data-filter="all">All Styles</button>
+                    <button class="btn btn-outline-success px-3 py-2 fw-semibold filter-btn" data-filter="swahili">Swahili / Arabic Influence</button>
+                    <button class="btn btn-outline-success px-3 py-2 fw-semibold filter-btn" data-filter="colonial">Colonial Heritage</button>
+                    <button class="btn btn-outline-success px-3 py-2 fw-semibold filter-btn" data-filter="modernist">Modernism & Beyond</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Landmarks Grid -->
+        <div class="row g-4" id="landmarks-grid">
+            
+            <!-- Landmark 1 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="colonial">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-danger mb-2">Colonial Heritage</span>
+                        <h5 class="card-title fw-bold">Kipande House</h5>
+                        <p class="card-text text-muted">A historic building built in 1913 featuring rough-hewn stone masonry and a clock face. It was used as a registration office where African labourers were forced to carry identification cards during British rule.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 2 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="modernist">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">Modernism & Beyond</span>
+                        <h5 class="card-title fw-bold">KICC (Convention Centre)</h5>
+                        <p class="card-text text-muted">A monumental brutalist structure built in 1973. Features a unique circular conference hall resembling a traditional African shield and an amphitheater inspired by conical thatched roofs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 3 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="colonial">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-danger mb-2">Colonial Heritage</span>
+                        <h5 class="card-title fw-bold">McMillan Memorial Library</h5>
+                        <p class="card-text text-muted">Built in 1931, this neoclassical library features towering granite columns and stone lions at the entrance. It remains a crucial repository of Nairobi's literary and colonial history.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 4 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="modernist">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">Modernism & Beyond</span>
+                        <h5 class="card-title fw-bold">Times Tower</h5>
+                        <p class="card-text text-muted">A sleek modern office complex constructed in 2000. Standing at 140 meters, this skyscraper features a glass-and-concrete facade optimized for solar reflection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 5 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="swahili">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-warning text-dark mb-2">Swahili / Arabic Influence</span>
+                        <h5 class="card-title fw-bold">Nairobi Jamia Mosque</h5>
+                        <p class="card-text text-muted">A gorgeous Islamic landmark in the CBD, featuring twin minarets, silver domes, and intricate wood carving details that mirror traditional Swahili coastal design sensibilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 6 -->
+            <div class="col-md-6 col-lg-4 landmark-card" data-style="modernist">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">Modernism & Beyond</span>
+                        <h5 class="card-title fw-bold">UNEP Gigiri Headquarters</h5>
+                        <p class="card-text text-muted">Completed in 2011, this sustainable eco-modern office building is completely solar-powered and uses natural air circulation systems to run without air conditioning.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No Results Found Alert -->
+        <div id="no-results" class="alert alert-secondary text-center py-4 mt-4" style="display: none;">
+            <p class="lead mb-0 text-muted">No landmarks found matching your query.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 ArchKenya. Exploring the spatial identities of Kenya.</p>
+            <p class="small text-muted mb-0">Built as a Web Application Development Assignment.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
