@@ -6,8 +6,102 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quizContainer) {
         initQuiz();
     }
+
+    // Initialize Nairobi Spotlight Filter if we are on the spotlight page
+    const landmarksGrid = document.getElementById('landmarks-grid');
+    if (landmarksGrid) {
+        initSpotlightFilter();
+    }
 });
 
+// -------------------------------------------------------------
+// 1. Nairobi Spotlight Filtering Logic
+// -------------------------------------------------------------
+function initSpotlightFilter() {
+    const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.landmark-card');
+    const noResults = document.getElementById('no-results');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // Apply animation styling dynamically
+    cards.forEach(card => {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+    });
+
+    function filterCards() {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const cardStyle = card.getAttribute('data-style');
+            const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+            const cardText = card.querySelector('.card-text').textContent.toLowerCase();
+            
+            // Check category match
+            const matchesCategory = currentCategory === 'all' || cardStyle === currentCategory;
+            
+            // Check search match
+            const matchesSearch = cardTitle.includes(searchQuery) || cardText.includes(searchQuery);
+
+            if (matchesCategory && matchesSearch) {
+                // Show card with a brief delay for transition smoothness
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 50);
+                visibleCount++;
+            } else {
+                // Hide card
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    if (card.style.opacity === '0') {
+                        card.style.display = 'none';
+                    }
+                }, 300);
+            }
+        });
+
+        // Show or hide "No Results" message
+        setTimeout(() => {
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+                noResults.style.opacity = '1';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }, 150);
+    }
+
+    // Search Input Listener
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterCards();
+        });
+    }
+
+    // Category Button Listener
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Toggle active style
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            currentCategory = btn.getAttribute('data-filter');
+            filterCards();
+        });
+    });
+}
+
+// -------------------------------------------------------------
+// 2. Interactive Quiz Logic
+// -------------------------------------------------------------
 function initQuiz() {
     const questions = [
         {
@@ -69,7 +163,6 @@ function initQuiz() {
     }
 
     function selectOption(selectedBtn, optionIdx) {
-        // Disable all option buttons
         const buttons = optionsContainer.querySelectorAll('.option-btn');
         buttons.forEach(btn => {
             btn.disabled = true;
@@ -82,11 +175,9 @@ function initQuiz() {
             score++;
         } else {
             selectedBtn.classList.add('bg-danger', 'text-white', 'border-danger');
-            // Show correct one in green
             buttons[q.correct].classList.add('bg-success', 'text-white', 'border-success');
         }
 
-        // Show explanation
         explanationText.style.display = 'block';
         explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
         
