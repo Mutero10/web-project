@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchKenya | Submit Landmark</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="index.html">🏢 ArchKenya</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="timeline.html">Timeline</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Architectural Eras
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="indigenous.html">Indigenous Spaces</a></li>
+                            <li><a class="dropdown-item" href="swahili.html">Swahili Coastal</a></li>
+                            <li><a class="dropdown-item" href="colonial.html">Colonial Heritage</a></li>
+                            <li><a class="dropdown-item" href="modernism.html">Modernism & Beyond</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nairobi.html">Nairobi Spotlight</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="document-landmark.html">Submit Landmark</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <header class="bg-success text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Document a Landmark</h1>
+            <p class="lead mb-0">Contribute to preserving Kenya's rich architectural history by proposing a local landmark.</p>
+        </div>
+    </header>
+
+    <!-- Submission Form -->
+    <main class="container my-5" style="max-width: 750px;">
+        <div class="card shadow border-0 p-4 p-md-5">
+            <h2 class="fw-bold mb-4 text-success border-bottom pb-2">Landmark Proposal Form</h2>
+            
+            <form id="landmark-form" novalidate>
+                
+                <!-- Landmark Name -->
+                <div class="mb-3">
+                    <label for="landmarkName" class="form-label fw-semibold">Landmark Name</label>
+                    <input type="text" class="form-control" id="landmarkName" placeholder="e.g. Fort Jesus, Kipande House" required>
+                    <div class="invalid-feedback">Please enter a valid landmark name (at least 3 characters).</div>
+                </div>
+
+                <!-- Location -->
+                <div class="mb-3">
+                    <label for="landmarkLocation" class="form-label fw-semibold">Location / City</label>
+                    <input type="text" class="form-control" id="landmarkLocation" placeholder="e.g. Mombasa Island, Nairobi CBD" required>
+                    <div class="invalid-feedback">Please enter a location.</div>
+                </div>
+
+                <!-- Era Selection -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="landmarkEra" class="form-label fw-semibold">Architectural Era</label>
+                        <select class="form-select" id="landmarkEra" required>
+                            <option value="">Choose an era...</option>
+                            <option value="indigenous">Indigenous / Traditional</option>
+                            <option value="swahili">Swahili Coastal</option>
+                            <option value="colonial">Colonial Heritage</option>
+                            <option value="modernist">Modernism & Beyond</option>
+                        </select>
+                        <div class="invalid-feedback">Please select an architectural era.</div>
+                    </div>
+
+                    <!-- Year of Construction -->
+                    <div class="col-md-6 mb-3">
+                        <label for="landmarkYear" class="form-label fw-semibold">Construction Year (approx.)</label>
+                        <input type="number" class="form-control" id="landmarkYear" min="1000" max="2026" placeholder="e.g. 1913, 1973" required>
+                        <div class="invalid-feedback">Please enter a valid construction year (between 1000 and 2026).</div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <label for="landmarkDesc" class="form-label fw-semibold">Landmark History & Architecture Details</label>
+                    <textarea class="form-control" id="landmarkDesc" rows="4" placeholder="Describe the materials, structural significance, and historic role of this landmark..." required></textarea>
+                    <div class="invalid-feedback">Please provide a description (at least 20 characters).</div>
+                </div>
+
+                <h4 class="fw-bold mb-3 text-secondary border-bottom pb-2 mt-4">Contributor Information</h4>
+
+                <!-- Contributor Info -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="contribName" class="form-label fw-semibold">Your Name</label>
+                        <input type="text" class="form-control" id="contribName" placeholder="Andrew Mutero" required>
+                        <div class="invalid-feedback">Please enter your name.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="contribEmail" class="form-label fw-semibold">Email Address</label>
+                        <input type="email" class="form-control" id="contribEmail" placeholder="andrew@example.com" required>
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-end mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-5 py-2 fw-semibold">Submit Landmark</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="success-modal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold" id="successModalLabel">🎉 Submission Received!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="fs-5 text-secondary">Thank you, <span id="contributor-thank-name" class="fw-bold text-dark"></span>!</p>
+                    <p class="mb-0 text-muted">Your proposal for <strong id="submitted-landmark-name" class="text-dark"></strong> has been submitted. Our team will review the historical details before publishing it to the Nairobi Spotlight.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 ArchKenya. Exploring the spatial identities of Kenya.</p>
+            <p class="small text-muted mb-0">Built as a Web Application Development Assignment.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
