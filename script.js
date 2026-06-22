@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (landmarksGrid) {
         initSpotlightFilter();
     }
+
+    // Initialize Form Validation if we are on the landmark submission page
+    const landmarkForm = document.getElementById('landmark-form');
+    if (landmarkForm) {
+        initFormValidation();
+    }
 });
 
 // -------------------------------------------------------------
@@ -100,7 +106,84 @@ function initSpotlightFilter() {
 }
 
 // -------------------------------------------------------------
-// 2. Interactive Quiz Logic
+// 2. Form Validation Logic
+// -------------------------------------------------------------
+function initFormValidation() {
+    const form = document.getElementById('landmark-form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        // Input Fields
+        const name = document.getElementById('landmarkName');
+        const location = document.getElementById('landmarkLocation');
+        const era = document.getElementById('landmarkEra');
+        const year = document.getElementById('landmarkYear');
+        const desc = document.getElementById('landmarkDesc');
+        const contribName = document.getElementById('contribName');
+        const contribEmail = document.getElementById('contribEmail');
+
+        // Helper validation function
+        function validateField(input, condition) {
+            if (condition) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            } else {
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+                isValid = false;
+            }
+        }
+
+        // Validate Landmark Name (min 3 chars)
+        validateField(name, name.value.trim().length >= 3);
+
+        // Validate Location (min 2 chars)
+        validateField(location, location.value.trim().length >= 2);
+
+        // Validate Era Selection
+        validateField(era, era.value !== "");
+
+        // Validate Year (between 1000 and 2026)
+        const yearVal = parseInt(year.value, 10);
+        validateField(year, !isNaN(yearVal) && yearVal >= 1000 && yearVal <= 2026);
+
+        // Validate Description (min 20 chars)
+        validateField(desc, desc.value.trim().length >= 20);
+
+        // Validate Contributor Name
+        validateField(contribName, contribName.value.trim().length >= 2);
+
+        // Validate Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        validateField(contribEmail, emailRegex.test(contribEmail.value.trim()));
+
+        // If form is valid, trigger modal and reset
+        if (isValid) {
+            // Set modal dynamic content
+            document.getElementById('contributor-thank-name').textContent = contribName.value.trim();
+            document.getElementById('submitted-landmark-name').textContent = name.value.trim();
+
+            // Trigger Bootstrap Modal
+            const successModal = new bootstrap.Modal(document.getElementById('success-modal'));
+            successModal.show();
+
+            // Reset form
+            form.reset();
+            
+            // Remove validation classes after reset
+            setTimeout(() => {
+                form.querySelectorAll('.is-valid').forEach(el => {
+                    el.classList.remove('is-valid');
+                });
+            }, 100);
+        }
+    });
+}
+
+// -------------------------------------------------------------
+// 3. Interactive Quiz Logic
 // -------------------------------------------------------------
 function initQuiz() {
     const questions = [
