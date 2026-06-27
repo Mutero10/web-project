@@ -2,18 +2,18 @@
 
 :root {
     /* Color Palette */
-    --primary: #d35400;      /* Terracotta */
-    --primary-hover: #a04000;
-    --secondary: #1e4620;    /* Forest Green */
-    --accent: #f39c12;       /* Warm Gold */
+    --primary: #000000;      /* Black */
+    --primary-hover: #333333;
+    --secondary: #555555;    /* Charcoal */
+    --accent: #222222;       /* Off-black */
     
     /* Light Mode Variables */
-    --bg-color: #f9f6f0;     /* Soft warm cream */
-    --text-color: #2c3e50;
+    --bg-color: #ffffff;     /* Pure White */
+    --text-color: #000000;   /* Pure Black */
     --card-bg: #ffffff;
-    --card-shadow: 0 10px 30px rgba(44, 62, 80, 0.06);
-    --nav-bg: #1a252f;
-    --border-color: #e5dec9;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --nav-bg: #000000;
+    --border-color: #e0e0e0;
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -23,7 +23,7 @@
     --text-color: #e0e0e0;
     --card-bg: #1e1e1e;
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --nav-bg: #0d0d0d;
+    --nav-bg: #000000;
     --border-color: #2d2d2d;
 }
 
