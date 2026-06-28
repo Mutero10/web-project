@@ -13,11 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initSpotlightFilter();
     }
 
-    // Initialize Form Validation if we are on the landmark submission page
-    const landmarkForm = document.getElementById('landmark-form');
-    if (landmarkForm) {
-        initFormValidation();
-    }
+
 
     // Initialize Back to Top button
     initBackToTop();
@@ -27,36 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 1. Nairobi Spotlight Filtering Logic
 // -------------------------------------------------------------
 function initSpotlightFilter() {
-    const grid = document.getElementById('landmarks-grid');
-    if (grid) {
-        // Load custom landmarks from localStorage
-        const customLandmarks = JSON.parse(localStorage.getItem('customLandmarks') || '[]');
-        customLandmarks.forEach(landmark => {
-            const cardCol = document.createElement('div');
-            cardCol.className = 'col-md-6 col-lg-4 landmark-card';
-            cardCol.setAttribute('data-style', landmark.era);
-            
-            // Set badge color based on era
-            let badgeBg = 'bg-secondary';
-            if (landmark.era === 'colonial') badgeBg = 'bg-danger';
-            else if (landmark.era === 'modernist') badgeBg = 'bg-success';
-            else if (landmark.era === 'swahili') badgeBg = 'bg-primary';
-            else if (landmark.era === 'indigenous') badgeBg = 'bg-warning text-dark';
-            
-            cardCol.innerHTML = `
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body">
-                        <span class="badge ${badgeBg} mb-2">${getEraDisplayName(landmark.era)}</span>
-                        <h5 class="card-title fw-bold">${escapeHTML(landmark.name)}</h5>
-                        <p class="text-muted small mb-2">Location: ${escapeHTML(landmark.location)} | Built: ${escapeHTML(landmark.year)}</p>
-                        <p class="card-text text-muted">${escapeHTML(landmark.description)}</p>
-                        <p class="text-end small text-muted mb-0 mt-3">Proposed by: ${escapeHTML(landmark.contribName)}</p>
-                    </div>
-                </div>
-            `;
-            grid.appendChild(cardCol);
-        });
-    }
+
 
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -136,96 +103,7 @@ function initSpotlightFilter() {
     });
 }
 
-// -------------------------------------------------------------
-// 2. Form Validation Logic
-// -------------------------------------------------------------
-function initFormValidation() {
-    const form = document.getElementById('landmark-form');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let isValid = true;
-
-        // Input Fields
-        const name = document.getElementById('landmarkName');
-        const location = document.getElementById('landmarkLocation');
-        const era = document.getElementById('landmarkEra');
-        const year = document.getElementById('landmarkYear');
-        const desc = document.getElementById('landmarkDesc');
-        const contribName = document.getElementById('contribName');
-        const contribEmail = document.getElementById('contribEmail');
-
-        // Helper validation function
-        function validateField(input, condition) {
-            if (condition) {
-                input.classList.remove('is-invalid');
-                input.classList.add('is-valid');
-            } else {
-                input.classList.remove('is-valid');
-                input.classList.add('is-invalid');
-                isValid = false;
-            }
-        }
-
-        // Validate Landmark Name (min 3 chars)
-        validateField(name, name.value.trim().length >= 3);
-
-        // Validate Location (min 2 chars)
-        validateField(location, location.value.trim().length >= 2);
-
-        // Validate Era Selection
-        validateField(era, era.value !== "");
-
-        // Validate Year (between 1000 and 2026)
-        const yearVal = parseInt(year.value, 10);
-        validateField(year, !isNaN(yearVal) && yearVal >= 1000 && yearVal <= 2026);
-
-        // Validate Description (min 20 chars)
-        validateField(desc, desc.value.trim().length >= 20);
-
-        // Validate Contributor Name
-        validateField(contribName, contribName.value.trim().length >= 2);
-
-        // Validate Email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        validateField(contribEmail, emailRegex.test(contribEmail.value.trim()));
-
-        // If form is valid, save to localStorage, trigger modal and reset
-        if (isValid) {
-            // Save to localStorage
-            const customLandmarks = JSON.parse(localStorage.getItem('customLandmarks') || '[]');
-            const newLandmark = {
-                name: name.value.trim(),
-                location: location.value.trim(),
-                era: era.value,
-                year: year.value.trim(),
-                description: desc.value.trim(),
-                contribName: contribName.value.trim(),
-                contribEmail: contribEmail.value.trim()
-            };
-            customLandmarks.push(newLandmark);
-            localStorage.setItem('customLandmarks', JSON.stringify(customLandmarks));
-
-            // Set modal dynamic content
-            document.getElementById('contributor-thank-name').textContent = contribName.value.trim();
-            document.getElementById('submitted-landmark-name').textContent = name.value.trim();
-
-            // Trigger Bootstrap Modal
-            const successModal = new bootstrap.Modal(document.getElementById('success-modal'));
-            successModal.show();
-
-            // Reset form
-            form.reset();
-            
-            // Remove validation classes after reset
-            setTimeout(() => {
-                form.querySelectorAll('.is-valid').forEach(el => {
-                    el.classList.remove('is-valid');
-                });
-            }, 100);
-        }
-    });
-}
 
 // -------------------------------------------------------------
 // 3. Interactive Quiz Logic
@@ -296,12 +174,13 @@ function initQuiz() {
 
     let questions = [];
     let currentIdx = 0;
-    let score = 0;
+    let userAnswers = [];
 
     const questionText = document.getElementById('q-text');
     const optionsContainer = document.getElementById('q-options');
     const explanationText = document.getElementById('q-explanation');
     const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
     const progressText = document.getElementById('q-progress');
     const resultContainer = document.getElementById('quiz-results');
     const scoreText = document.getElementById('score-text');
@@ -320,7 +199,7 @@ function initQuiz() {
         const shuffledPool = shuffleArray([...allQuestions]);
         questions = shuffledPool.slice(0, 4);
         currentIdx = 0;
-        score = 0;
+        userAnswers = [null, null, null, null];
     }
 
     function showQuestion() {
@@ -333,16 +212,54 @@ function initQuiz() {
         questionText.textContent = q.question;
         progressText.textContent = `Question ${currentIdx + 1} of ${questions.length}`;
 
+        // Handle Back button visibility
+        if (currentIdx > 0) {
+            prevBtn.style.display = 'inline-block';
+        } else {
+            prevBtn.style.display = 'none';
+        }
+
+        const answeredIdx = userAnswers[currentIdx];
+
         q.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.className = "list-group-item list-group-item-action p-3 mb-2 rounded border text-start fw-medium option-btn";
             btn.textContent = opt;
-            btn.addEventListener('click', () => selectOption(btn, idx));
+
+            if (answeredIdx !== null) {
+                // Already answered this question
+                btn.disabled = true;
+                btn.style.cursor = 'default';
+                if (idx === q.correct) {
+                    btn.classList.add('bg-success', 'text-white', 'border-success');
+                } else if (idx === answeredIdx) {
+                    btn.classList.add('bg-danger', 'text-white', 'border-danger');
+                }
+            } else {
+                // Not yet answered
+                btn.addEventListener('click', () => selectOption(btn, idx));
+            }
+
             optionsContainer.appendChild(btn);
         });
+
+        // Show explanation and next buttons if already answered
+        if (answeredIdx !== null) {
+            explanationText.style.display = 'block';
+            explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
+            
+            nextBtn.style.display = 'inline-block';
+            if (currentIdx === questions.length - 1) {
+                nextBtn.textContent = "See Results";
+            } else {
+                nextBtn.textContent = "Next Question";
+            }
+        }
     }
 
     function selectOption(selectedBtn, optionIdx) {
+        userAnswers[currentIdx] = optionIdx;
+
         const buttons = optionsContainer.querySelectorAll('.option-btn');
         buttons.forEach(btn => {
             btn.disabled = true;
@@ -352,7 +269,6 @@ function initQuiz() {
         const q = questions[currentIdx];
         if (optionIdx === q.correct) {
             selectedBtn.classList.add('bg-success', 'text-white', 'border-success');
-            score++;
         } else {
             selectedBtn.classList.add('bg-danger', 'text-white', 'border-danger');
             buttons[q.correct].classList.add('bg-success', 'text-white', 'border-success');
@@ -378,10 +294,20 @@ function initQuiz() {
         }
     });
 
+    prevBtn.addEventListener('click', () => {
+        if (currentIdx > 0) {
+            currentIdx--;
+            showQuestion();
+        }
+    });
+
     function showResults() {
         quizActive.style.display = 'none';
         resultContainer.style.display = 'block';
         
+        // Calculate score from answers
+        const score = userAnswers.reduce((acc, ans, idx) => acc + (ans === questions[idx].correct ? 1 : 0), 0);
+
         let rank = "";
         let color = "";
         if (score === questions.length) {
@@ -433,28 +359,4 @@ function initBackToTop() {
     });
 }
 
-// -------------------------------------------------------------
-// 5. Utility Helper Functions
-// -------------------------------------------------------------
-function escapeHTML(str) {
-    if (!str) return '';
-    return str.replace(/[&<>'"]/g, 
-        tag => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            "'": '&#39;',
-            '"': '&quot;'
-        }[tag] || tag)
-    );
-}
 
-function getEraDisplayName(era) {
-    const names = {
-        'indigenous': 'Indigenous / Traditional',
-        'swahili': 'Swahili Coastal',
-        'colonial': 'Colonial Heritage',
-        'modernist': 'Modernism & Beyond'
-    };
-    return names[era] || era;
-}
