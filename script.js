@@ -27,6 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
 // 1. Nairobi Spotlight Filtering Logic
 // -------------------------------------------------------------
 function initSpotlightFilter() {
+    const grid = document.getElementById('landmarks-grid');
+    if (grid) {
+        // Load custom landmarks from localStorage
+        const customLandmarks = JSON.parse(localStorage.getItem('customLandmarks') || '[]');
+        customLandmarks.forEach(landmark => {
+            const cardCol = document.createElement('div');
+            cardCol.className = 'col-md-6 col-lg-4 landmark-card';
+            cardCol.setAttribute('data-style', landmark.era);
+            
+            // Set badge color based on era
+            let badgeBg = 'bg-secondary';
+            if (landmark.era === 'colonial') badgeBg = 'bg-danger';
+            else if (landmark.era === 'modernist') badgeBg = 'bg-success';
+            else if (landmark.era === 'swahili') badgeBg = 'bg-primary';
+            else if (landmark.era === 'indigenous') badgeBg = 'bg-warning text-dark';
+            
+            cardCol.innerHTML = `
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <span class="badge ${badgeBg} mb-2">${getEraDisplayName(landmark.era)}</span>
+                        <h5 class="card-title fw-bold">${escapeHTML(landmark.name)}</h5>
+                        <p class="text-muted small mb-2">Location: ${escapeHTML(landmark.location)} | Built: ${escapeHTML(landmark.year)}</p>
+                        <p class="card-text text-muted">${escapeHTML(landmark.description)}</p>
+                        <p class="text-end small text-muted mb-0 mt-3">Proposed by: ${escapeHTML(landmark.contribName)}</p>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(cardCol);
+        });
+    }
+
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.landmark-card');
@@ -57,7 +88,6 @@ function initSpotlightFilter() {
             const matchesSearch = cardTitle.includes(searchQuery) || cardText.includes(searchQuery);
 
             if (matchesCategory && matchesSearch) {
-                // Show card with a brief delay for transition smoothness
                 card.style.display = 'block';
                 setTimeout(() => {
                     card.style.opacity = '1';
@@ -65,7 +95,6 @@ function initSpotlightFilter() {
                 }, 50);
                 visibleCount++;
             } else {
-                // Hide card
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -98,7 +127,6 @@ function initSpotlightFilter() {
     // Category Button Listener
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Toggle active style
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -162,8 +190,22 @@ function initFormValidation() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         validateField(contribEmail, emailRegex.test(contribEmail.value.trim()));
 
-        // If form is valid, trigger modal and reset
+        // If form is valid, save to localStorage, trigger modal and reset
         if (isValid) {
+            // Save to localStorage
+            const customLandmarks = JSON.parse(localStorage.getItem('customLandmarks') || '[]');
+            const newLandmark = {
+                name: name.value.trim(),
+                location: location.value.trim(),
+                era: era.value,
+                year: year.value.trim(),
+                description: desc.value.trim(),
+                contribName: contribName.value.trim(),
+                contribEmail: contribEmail.value.trim()
+            };
+            customLandmarks.push(newLandmark);
+            localStorage.setItem('customLandmarks', JSON.stringify(customLandmarks));
+
             // Set modal dynamic content
             document.getElementById('contributor-thank-name').textContent = contribName.value.trim();
             document.getElementById('submitted-landmark-name').textContent = name.value.trim();
@@ -389,4 +431,30 @@ function initBackToTop() {
             behavior: 'smooth'
         });
     });
+}
+
+// -------------------------------------------------------------
+// 5. Utility Helper Functions
+// -------------------------------------------------------------
+function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
+}
+
+function getEraDisplayName(era) {
+    const names = {
+        'indigenous': 'Indigenous / Traditional',
+        'swahili': 'Swahili Coastal',
+        'colonial': 'Colonial Heritage',
+        'modernist': 'Modernism & Beyond'
+    };
+    return names[era] || era;
 }
