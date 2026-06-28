@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (landmarkForm) {
         initFormValidation();
     }
+
+    // Initialize Back to Top button
+    initBackToTop();
 });
 
 // -------------------------------------------------------------
@@ -311,4 +314,27 @@ function initQuiz() {
     });
 
     showQuestion();
+}
+
+// -------------------------------------------------------------
+// 4. Back to Top Button Logic
+// -------------------------------------------------------------
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (!backToTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }
