@@ -82,11 +82,16 @@
 
             <!-- Quiz Results Screen -->
             <div id="quiz-results" class="text-center py-4" style="display: none;">
-                <div class="mb-4">
-                    <span class="display-1">🏆</span>
-                </div>
+
                 <h2 class="fw-bold mb-3">Quiz Completed!</h2>
                 <p id="score-text" class="lead mb-4">Calculating your score...</p>
+                
+                <!-- Detailed Review Section -->
+                <div id="quiz-review" class="text-start my-4 border-top pt-4" style="max-width: 700px; margin: 0 auto;">
+                    <h3 class="fw-bold mb-3 text-center">Review Answers</h3>
+                    <div id="review-list" class="mb-4"></div>
+                </div>
+
                 <button id="restart-btn" class="btn btn-danger px-4 py-2 fw-semibold">Try Again</button>
             </div>
 

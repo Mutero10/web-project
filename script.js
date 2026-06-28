@@ -232,10 +232,12 @@ function initQuiz() {
                 // Already answered this question
                 btn.disabled = true;
                 btn.style.cursor = 'default';
-                if (idx === q.correct) {
-                    btn.classList.add('bg-success', 'text-white', 'border-success');
-                } else if (idx === answeredIdx) {
-                    btn.classList.add('bg-danger', 'text-white', 'border-danger');
+                if (idx === answeredIdx) {
+                    if (idx === q.correct) {
+                        btn.classList.add('bg-success', 'text-white', 'border-success');
+                    } else {
+                        btn.classList.add('bg-danger', 'text-white', 'border-danger');
+                    }
                 }
             } else {
                 // Not yet answered
@@ -245,11 +247,8 @@ function initQuiz() {
             optionsContainer.appendChild(btn);
         });
 
-        // Show explanation, clear, and next buttons if already answered
+        // Show clear and next buttons if already answered
         if (answeredIdx !== null) {
-            explanationText.style.display = 'block';
-            explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
-            
             clearBtn.style.display = 'inline-block';
             nextBtn.style.display = 'inline-block';
             if (currentIdx === questions.length - 1) {
@@ -274,12 +273,8 @@ function initQuiz() {
             selectedBtn.classList.add('bg-success', 'text-white', 'border-success');
         } else {
             selectedBtn.classList.add('bg-danger', 'text-white', 'border-danger');
-            buttons[q.correct].classList.add('bg-success', 'text-white', 'border-success');
         }
 
-        explanationText.style.display = 'block';
-        explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
-        
         clearBtn.style.display = 'inline-block';
         nextBtn.style.display = 'inline-block';
         if (currentIdx === questions.length - 1) {
@@ -317,20 +312,57 @@ function initQuiz() {
         // Calculate score from answers
         const score = userAnswers.reduce((acc, ans, idx) => acc + (ans === questions[idx].correct ? 1 : 0), 0);
 
-        let rank = "";
-        let color = "";
-        if (score === questions.length) {
-            rank = "Master Architect 🏛️";
-            color = "text-success";
-        } else if (score >= 2) {
-            rank = "Apprentice Builder 🧱";
-            color = "text-warning";
-        } else {
-            rank = "Novice Historian 📜";
-            color = "text-danger";
-        }
+        scoreText.innerHTML = `You scored <span class="fw-bold fs-3">${score} / ${questions.length}</span>.`;
 
-        scoreText.innerHTML = `You scored <span class="fw-bold fs-3">${score} / ${questions.length}</span>.<br>Your Rank: <span class="fw-bold fs-4 ${color}">${rank}</span>`;
+        // Render review list
+        const reviewList = document.getElementById('review-list');
+        if (reviewList) {
+            reviewList.innerHTML = '';
+            questions.forEach((q, idx) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'mb-4 p-3 rounded bg-white border text-start';
+                
+                const userAnswer = userAnswers[idx];
+                const isCorrect = userAnswer === q.correct;
+                
+                let questionTitleHtml = `<h5 class="fw-bold mb-3 d-flex align-items-center justify-content-between flex-wrap gap-2">
+                    <span>Question ${idx + 1}: ${q.question}</span>
+                    <span class="badge ${isCorrect ? 'bg-success' : 'bg-danger'} fs-6">
+                        ${isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                    </span>
+                </h5>`;
+
+                let optionsHtml = '<div class="list-group mb-3">';
+                q.options.forEach((opt, oIdx) => {
+                    let optClass = 'bg-light text-dark';
+                    let label = '';
+                    
+                    if (oIdx === q.correct) {
+                        optClass = 'bg-success text-white border-success';
+                        label = ' <span class="badge bg-white text-success ms-2">Correct Answer</span>';
+                    } else if (oIdx === userAnswer) {
+                        optClass = 'bg-danger text-white border-danger';
+                        label = ' <span class="badge bg-white text-danger ms-2">Your Attempt</span>';
+                    }
+                    
+                    optionsHtml += `
+                        <div class="list-group-item p-3 mb-2 rounded border ${optClass} fw-medium">
+                            ${opt}${label}
+                        </div>
+                    `;
+                });
+                optionsHtml += '</div>';
+
+                const explanationHtml = `
+                    <div class="alert alert-info p-3 mb-0" style="border-left: 5px solid var(--accent);">
+                        <strong>Explanation:</strong> ${q.explanation}
+                    </div>
+                `;
+
+                itemDiv.innerHTML = questionTitleHtml + optionsHtml + explanationHtml;
+                reviewList.appendChild(itemDiv);
+            });
+        }
     }
 
     restartBtn.addEventListener('click', () => {
