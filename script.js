@@ -1,6 +1,9 @@
 // Global JavaScript for ArchKenya
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Theme (Dark/Light Mode)
+    initTheme();
+
     // Initialize Quiz if we are on the quiz page
     const quizContainer = document.getElementById('quiz-container');
     if (quizContainer) {
@@ -12,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (landmarksGrid) {
         initSpotlightFilter();
     }
-
-
 
     // Initialize Back to Top button
     initBackToTop();
@@ -399,6 +400,41 @@ function initBackToTop() {
             behavior: 'smooth'
         });
     });
+}
+
+// -------------------------------------------------------------
+// 5. Theme Handler (Dark/Light Mode)
+// -------------------------------------------------------------
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) themeIcon.textContent = '☀️';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) themeIcon.textContent = '🌙';
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) themeIcon.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) themeIcon.textContent = '☀️';
+            }
+        });
+    }
 }
 
 

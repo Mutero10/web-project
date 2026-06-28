@@ -193,3 +193,61 @@ h1, h2, h3, h4, h5, h6, .navbar-brand, .font-serif {
     visibility: visible;
     transform: translateY(0);
 }
+
+/* --- Dark Mode Utility Overrides --- */
+[data-theme="dark"] body.bg-light,
+[data-theme="dark"] body {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .card-title {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .text-secondary,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .card-text {
+    color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .card {
+    background-color: #1e1e1e !important;
+    border: 1px solid #2d2d2d !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .card:hover {
+    border-color: #ffffff !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .navbar {
+    border-bottom: 2px solid #2d2d2d !important;
+}
+
+[data-theme="dark"] #theme-toggle {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="dark"] .list-group-item.bg-transparent {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .list-group-item:not(.bg-transparent) {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .bg-white:not(.badge) {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
