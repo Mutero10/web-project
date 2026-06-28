@@ -189,7 +189,7 @@ function initFormValidation() {
 // 3. Interactive Quiz Logic
 // -------------------------------------------------------------
 function initQuiz() {
-    const questions = [
+    const allQuestions = [
         {
             question: "What material was traditionally used for ceilings and structural support in Swahili Coastal architecture due to its termite-resistant nature?",
             options: ["Bamboo Poles", "Boriti (Mangrove poles)", "Eucalyptus Wood", "Cypress Timber"],
@@ -213,9 +213,46 @@ function initQuiz() {
             options: ["Times Tower", "KICC (Kenyatta International Convention Centre)", "Jamia Mosque", "Nairobi National Museum"],
             correct: 1,
             explanation: "Designed by Karl Henrik Nøstvik, the KICC is a landmark example of African Modernism, blending international modernist concrete forms with traditional shapes inspired by a Kenyan shield."
+        },
+        {
+            question: "Which traditional Kenyan house type is built primarily with flexible curved branches and animal skins, designed to be quickly dismantled and transported by camels?",
+            options: ["Mijikenda Kaya", "Maasai Manyatta", "Rendille Goba", "Luo Dala"],
+            correct: 2,
+            explanation: "The Rendille Goba is a portable, lightweight dome-shaped dwelling designed to be easily packed onto camels within an hour for their nomadic migrations."
+        },
+        {
+            question: "Which building in Nairobi, constructed in 1931, features massive granite steps, imposing neoclassical pillars, and stone lion statues at its entrance?",
+            options: ["Norfolk Hotel", "Kipande House", "McMillan Memorial Library", "Nairobi Gallery"],
+            correct: 2,
+            explanation: "McMillan Memorial Library is a classic example of grand neoclassical architecture in Nairobi, constructed with granite columns and flanked by iconic stone lions."
+        },
+        {
+            question: "Which UNESCO World Heritage Swahili settlement is characterized by narrow streets, coral stone houses, and intricate carved wooden doors?",
+            options: ["Mombasa Old Town", "Lamu Old Town", "Gede Ruins", "Siyu Settlement"],
+            correct: 1,
+            explanation: "Lamu Old Town is the oldest and best-preserved Swahili settlement in East Africa, famous for its narrow alleyways and monumental carved doors."
+        },
+        {
+            question: "Which modernist building, standing at 140 meters high, was once the tallest building in East Africa and is wrapped in solar-reflective glass?",
+            options: ["KICC", "Nation Centre", "Times Tower", "Co-operative Bank House"],
+            correct: 2,
+            explanation: "Times Tower (New Central Bank Tower) is a landmark modernist skyscraper wrapped in solar-reflective glass that dominated the East African skyline for years."
+        },
+        {
+            question: "What sacred, forested fortresses in the coastal hinterlands were used by the Mijikenda people for security, governance, and spiritual rituals?",
+            options: ["Manyattas", "Kayas", "Dalas", "Goba Villages"],
+            correct: 1,
+            explanation: "Kayas are fortified villages hidden inside sacred forests, serving as historical, cultural, and spiritual centers for the Mijikenda people."
+        },
+        {
+            question: "What material, mined from the ocean, was traditionally used with lime plaster as the primary structural stone in Swahili coastal architecture?",
+            options: ["Granite Block", "Coral Rag", "Clay Brick", "Sandstone Slab"],
+            correct: 1,
+            explanation: "Coral rag (fossilized coral) was mined directly from ocean reefs and used with lime plaster to construct permanent merchant houses along the East African coast."
         }
     ];
 
+    let questions = [];
     let currentIdx = 0;
     let score = 0;
 
@@ -228,6 +265,21 @@ function initQuiz() {
     const scoreText = document.getElementById('score-text');
     const quizActive = document.getElementById('quiz-active');
     const restartBtn = document.getElementById('restart-btn');
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function startNewRound() {
+        const shuffledPool = shuffleArray([...allQuestions]);
+        questions = shuffledPool.slice(0, 4);
+        currentIdx = 0;
+        score = 0;
+    }
 
     function showQuestion() {
         explanationText.style.display = 'none';
@@ -305,14 +357,14 @@ function initQuiz() {
     }
 
     restartBtn.addEventListener('click', () => {
-        currentIdx = 0;
-        score = 0;
+        startNewRound();
         quizActive.style.display = 'block';
         resultContainer.style.display = 'none';
         nextBtn.textContent = "Next Question";
         showQuestion();
     });
 
+    startNewRound();
     showQuestion();
 }
 
