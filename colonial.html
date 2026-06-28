@@ -9,9 +9,9 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.html">🏢 ArchKenya</a>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background-color: #d35400 !important;">
+        <div class="container-fluid px-md-5">
+            <a class="navbar-brand fw-bold text-white" href="index.html">ArchKenya</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,70 +48,110 @@
         </div>
     </nav>
 
-    <header class="bg-danger text-white text-center py-5">
+    <header class="text-white text-center py-5" style="background-color: #d35400 !important;">
         <div class="container">
             <h1 class="display-5 fw-bold">Colonial Heritage</h1>
-            <p class="lead mb-0">The arrival of the railway, stone masonry, and tropical British administration.</p>
         </div>
     </header>
 
     <main class="container my-5">
-        <div class="row g-5">
-            
-            <div class="col-lg-7">
-                <h2 class="fw-bold text-danger mb-4">The Railway Town</h2>
-                <p class="lead text-secondary">The late 19th and early 20th centuries brought a drastic shift to the Kenyan landscape, driven primarily by the construction of the Kenya-Uganda Railway.</p>
-                
+        
+        <!-- Section 1: Introduction -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold text-danger mb-4 border-bottom pb-2">The Railway Town</h2>
                 <p>As British administration took root, they sought to build permanent, imposing structures that reflected imperial power while adapting to the harsh equatorial climate. Nairobi, originally a swampy railway depot, rapidly transformed into a city defined by strict urban planning, heavy stone buildings, and European architectural imports.</p>
-                
-                <h4 class="fw-bold mt-4">Key Design Philosophies:</h4>
-                <ul class="list-group list-group-flush mb-4">
+            </div>
+        </div>
+
+        <!-- Section 2: Key Design Philosophies & Quote -->
+        <div class="row g-4 mb-5 align-items-center">
+            <div class="col-lg-7">
+                <h4 class="fw-bold mb-3">Key Design Philosophies:</h4>
+                <ul class="list-group list-group-flush mb-0">
                     <li class="list-group-item bg-transparent ps-0"><strong>Deep Verandas:</strong> To combat the intense tropical sun, colonial architects wrapped buildings in wide, shaded verandas. This kept the interior walls cool and provided sheltered outdoor living spaces.</li>
                     <li class="list-group-item bg-transparent ps-0"><strong>Elevated Foundations:</strong> Many structures were built on raised plinths or stone pillars to protect against flooding, dampness, and termites.</li>
                     <li class="list-group-item bg-transparent ps-0"><strong>Neoclassical Elements:</strong> Government and civic buildings often featured imposing columns, symmetrical facades, and grand entrance archways designed to project authority.</li>
                 </ul>
-
-                <blockquote class="blockquote bg-white p-4 rounded border-start border-danger border-4 shadow-sm">
-                    <p class="mb-0 italic">"The architecture of this era was an exercise in adaptation: taking rigid British masonry and opening it up to survive the East African sun."</p>
-                </blockquote>
             </div>
-
-            <div class="col-lg-5">
-                <h3 class="fw-bold mb-4">Iconic Landmarks</h3>
-                
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-danger">Kipande House</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Nairobi CBD (Built 1913)</h6>
-                        <p class="card-text text-muted">Originally designed as a railway warehouse. It is famous for its rough-hewn stone masonry, a towering clock face, and its historical role as the registration center where Africans were forced to carry the 'Kipande' identification.</p>
-                    </div>
-                </div>
-
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-danger">McMillan Memorial Library</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Nairobi CBD (Built 1931)</h6>
-                        <p class="card-text text-muted">A perfect example of imposing neoclassical architecture. Flanked by massive stone lion statues, the library features grand granite steps, towering columns, and an expansive central reading room.</p>
-                    </div>
-                </div>                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-danger">The Norfolk Hotel</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Nairobi (Built 1904)</h6>
-                        <p class="card-text text-muted">A landmark historic hotel featuring Tudor-style timber framing, stone masonry, and landscaped gardens. It served as a major social hub for early settler communities.</p>
-                    </div>
-                </div>
-
-            </div>
+          
         </div>
+
+        <!-- Section 3: Iconic Landmarks -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4 border-bottom pb-2">Iconic Landmarks</h3>
+            </div>
+            
+            <!-- Landmark 1: Kipande House -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h5 class="fw-bold text-danger">Kipande House</h5>
+                            <h6 class="text-muted mb-2">Nairobi CBD (Built 1913)</h6>
+                            <p class="text-muted mb-0">Originally designed as a railway warehouse. It is famous for its rough-hewn stone masonry, a towering clock face, and its historical role as the registration center where Africans were forced to carry the 'Kipande' identification.</p>
+                        </div>
+                        <div class="col-md-5 text-center mt-3 mt-md-0">
+                            <img src="assets/colonial.jpg" class="img-fluid rounded shadow-sm" alt="Kipande House">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 2: McMillan Memorial Library -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h5 class="fw-bold text-danger">McMillan Memorial Library</h5>
+                            <h6 class="text-muted mb-2">Nairobi CBD (Built 1931)</h6>
+                            <p class="text-muted mb-0">A perfect example of imposing neoclassical architecture. Flanked by massive stone lion statues, the library features grand granite steps, towering columns, and an expansive central reading room.</p>
+                        </div>
+                        <div class="col-md-5 text-center mt-3 mt-md-0">
+                            <img src="assets/McMillan_Memorial_Library,_Nairobi,_2025_(01).jpg" class="img-fluid rounded shadow-sm" alt="McMillan Memorial Library">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 3: The Norfolk Hotel -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h5 class="fw-bold text-danger">The Norfolk Hotel</h5>
+                            <h6 class="text-muted mb-2">Nairobi (Built 1904)</h6>
+                            <p class="text-muted mb-0">A landmark historic hotel featuring Tudor-style timber framing, stone masonry, and landscaped gardens. It served as a major social hub for early settler communities.</p>
+                        </div>
+                        <div class="col-md-5 text-center mt-3 mt-md-0">
+                            <img src="assets/Fairmont_The_Norfolk_Hotel_front_entrance.jpg" class="img-fluid rounded shadow-sm" alt="The Norfolk Hotel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 4: Nairobi Gallery -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h5 class="fw-bold text-danger">Nairobi Gallery (Old PC's Office)</h5>
+                            <h6 class="text-muted mb-2">Nairobi CBD (Built 1913)</h6>
+                            <p class="text-muted mb-0">Designed by government architect C. Rand-Overy. Built in a classical style with dressed stone walls, classical pilasters, and an octagonal central hall, this building was the administrative center of early Nairobi and represents 'Point Zero' from which all city distances were measured.</p>
+                        </div>
+                        <div class="col-md-5 text-center mt-3 mt-md-0">
+                            <img src="assets/nairobigallery.webp" class="img-fluid rounded shadow-sm" alt="Nairobi Gallery">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 mt-auto">
-        <div class="container">
-            <p class="mb-1">&copy; 2026 ArchKenya. Exploring the spatial identities of Kenya.</p>
-            <p class="small text-muted mb-0">Built as a Web Application Development Assignment.</p>
-        </div>
-    </footer>
+
 
     <button id="back-to-top" title="Go to top">↑</button>
 
