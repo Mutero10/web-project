@@ -181,6 +181,7 @@ function initQuiz() {
     const explanationText = document.getElementById('q-explanation');
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
+    const clearBtn = document.getElementById('clear-btn');
     const progressText = document.getElementById('q-progress');
     const resultContainer = document.getElementById('quiz-results');
     const scoreText = document.getElementById('score-text');
@@ -206,6 +207,7 @@ function initQuiz() {
         explanationText.style.display = 'none';
         explanationText.innerHTML = '';
         nextBtn.style.display = 'none';
+        clearBtn.style.display = 'none';
         optionsContainer.innerHTML = '';
         
         let q = questions[currentIdx];
@@ -243,11 +245,12 @@ function initQuiz() {
             optionsContainer.appendChild(btn);
         });
 
-        // Show explanation and next buttons if already answered
+        // Show explanation, clear, and next buttons if already answered
         if (answeredIdx !== null) {
             explanationText.style.display = 'block';
             explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
             
+            clearBtn.style.display = 'inline-block';
             nextBtn.style.display = 'inline-block';
             if (currentIdx === questions.length - 1) {
                 nextBtn.textContent = "See Results";
@@ -277,6 +280,7 @@ function initQuiz() {
         explanationText.style.display = 'block';
         explanationText.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
         
+        clearBtn.style.display = 'inline-block';
         nextBtn.style.display = 'inline-block';
         if (currentIdx === questions.length - 1) {
             nextBtn.textContent = "See Results";
@@ -299,6 +303,11 @@ function initQuiz() {
             currentIdx--;
             showQuestion();
         }
+    });
+
+    clearBtn.addEventListener('click', () => {
+        userAnswers[currentIdx] = null;
+        showQuestion();
     });
 
     function showResults() {
@@ -329,6 +338,7 @@ function initQuiz() {
         quizActive.style.display = 'block';
         resultContainer.style.display = 'none';
         nextBtn.textContent = "Next Question";
+        clearBtn.style.display = 'none';
         showQuestion();
     });
 
