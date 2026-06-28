@@ -10,9 +10,9 @@
 <body class="bg-light">
 
     <!-- Global Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.html">🏢 ArchKenya</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top shadow-sm">
+        <div class="container-fluid px-md-5">
+            <a class="navbar-brand fw-bold text-white" href="index.html">ArchKenya</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,66 +59,119 @@
 
     <!-- Main Content Split Grid -->
     <main class="container my-5">
-        <div class="row g-5">
-            
-            <!-- Left Column: Architectural History & Theory -->
-            <div class="col-lg-7">
-                <h2 class="fw-bold text-primary mb-4">A Blend of Continents</h2>
+        
+        <!-- Section 1: Introduction -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold text-primary mb-4 border-bottom pb-2">A Blend of Continents</h2>
                 <p class="lead text-secondary">The Kenyan coast has been a global hub for centuries. As monsoon winds brought merchants from Oman, Persia, and India, a unique Afro-Arabic architectural identity was born.</p>
-                
                 <p>Swahili architecture is instantly recognizable by its heavy use of coral rag (fossilized coral mined from the ocean), brilliant white lime plaster, and incredibly detailed wooden doors. Unlike the temporary structures of the deep interior, these coastal towns were built as permanent, wealthy merchant fortresses.</p>
-                
-                <h4 class="fw-bold mt-4">Key Design Philosophies:</h4>
-                <ul class="list-group list-group-flush mb-4">
-                    <li class="list-group-item bg-transparent ps-0"><strong>The Carved Door (Milango):</strong> The heavy, brass-studded wooden door was the ultimate status symbol. It was often ordered and carved before the house itself was even built, featuring intricate geometric and Quranic inscriptions.</li>
-                    <li class="list-group-item bg-transparent ps-0"><strong>Inner Courtyards:</strong> Houses were built inward-facing. Thick windowless outer walls provided security and privacy, while the center of the home opened up to a bright, breezy courtyard to naturally cool the building.</li>
-                    <li class="list-group-item bg-transparent ps-0"><strong>Mangrove Ceilings:</strong> Ceilings and upper floors were supported by straight, termite-resistant Boriti (mangrove poles) harvested directly from coastal swamps.</li>
-                </ul>
-
-                <blockquote class="blockquote bg-white p-4 rounded border-start border-primary border-4 shadow-sm">
-                    <p class="mb-0 italic">"The Swahili house is a vessel of light and shadow, designed to capture the cool sea breeze while keeping the harsh equatorial sun out."</p>
-                </blockquote>
-            </div>
-
-            <!-- Right Column: Case Studies / Feature Highlights -->
-            <div class="col-lg-5">
-                <h3 class="fw-bold mb-4">Iconic Landmarks</h3>
-                
-                <!-- Card 1: Lamu Old Town -->
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-primary">Lamu Old Town</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">UNESCO World Heritage Site</h6>
-                        <p class="card-text text-muted">The oldest and best-preserved Swahili settlement in East Africa. The town is defined by narrow, winding alleyways designed to keep streets shaded, with massive coral stone houses featuring inner galleries and rooftop patios.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2: Mombasa Old Town -->
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-primary">Mombasa Old Town</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Mombasa Island</h6>
-                        <p class="card-text text-muted">Featuring a heavy blend of Swahili, Arabic, and later Portuguese influence (such as Fort Jesus). Known for its elaborately carved wooden balconies and colorful shutters facing the old port.</p>
-                    </div>
-                <!-- Card 3: Form Follows Climate -->
-                <div class="card border-0 shadow-sm mt-4 bg-dark text-white">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-warning">Form Follows Climate</h5>
-                        <p class="card-text small opacity-75">Swahili houses feature roof-level terraces to capture high coastal breezes, while narrow winding streets are deliberately designed to provide maximum daytime shading.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        
+
+        <!-- Section 3: Iconic Landmarks -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4 border-bottom pb-2">Iconic Landmarks</h3>
+            </div>
+            
+            <!-- Landmark 1: Lamu Old Town -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold text-primary">Lamu Old Town</h5>
+                            <h6 class="text-muted mb-2">UNESCO World Heritage Site</h6>
+                            <p class="text-muted mb-0">The oldest and best-preserved Swahili settlement in East Africa. The town is defined by narrow, winding alleyways designed to keep streets shaded, with massive coral stone houses featuring inner galleries and rooftop patios.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <img src="assets/swahili.jpg" class="img-fluid rounded shadow-sm" alt="Lamu Old Town">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 2: Mombasa Old Town -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold text-primary">Mombasa Old Town</h5>
+                            <h6 class="text-muted mb-2">Mombasa Island</h6>
+                            <p class="text-muted mb-0">Featuring a heavy blend of Swahili, Arabic, and later Portuguese influence (such as Fort Jesus). Known for its elaborately carved wooden balconies and colorful shutters facing the old port.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <img src="assets/mombasa.jpg" class="img-fluid rounded shadow-sm" alt="Mombasa Old Town">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 3: Gede Ruins -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold text-primary">Gede Ruins</h5>
+                            <h6 class="text-muted mb-2">Malindi / Coastal Forest</h6>
+                            <p class="text-muted mb-0">An abandoned medieval Swahili stone town dating back to the 12th century. The ruins feature a complex palace structure, numerous coral stone houses with sunken courtyards, and pillar tombs showcasing advanced stone masonry and coral plastering.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <img src="assets/gede.jpg" class="img-fluid rounded shadow-sm" alt="Gede Ruins">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 4: Siyu Fort -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold text-primary">Siyu Fort</h5>
+                            <h6 class="text-muted mb-2">Pate Island / Lamu Archipelago</h6>
+                            <p class="text-muted mb-0">Unlike other coastal forts built by Portuguese or Omani rulers, Siyu Fort was constructed entirely by local Swahili leaders in the 19th century to defend against Omani incursions, utilizing native coral rag stone and timber craftsmanship.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <img src="assets/siyu.jpg" class="img-fluid rounded shadow-sm" alt="Siyu Fort">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landmark 5: Takwa Ruins -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="fw-bold text-primary">Takwa Ruins</h5>
+                            <h6 class="text-muted mb-2">Manda Island / Lamu Archipelago</h6>
+                            <p class="text-muted mb-0">The remains of a 15th-century Swahili trading town. Its Friday Mosque is architecturally unique, featuring a prominent coral pillar constructed directly over the mihrab, a design detail honoring local spiritual leaders.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <img src="assets/takwa.jpg" class="img-fluid rounded shadow-sm" alt="Takwa Ruins">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Section 4: Form Follows Climate -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm bg-dark text-white p-4">
+                    <h5 class="card-title fw-bold text-warning mb-3">Form Follows Climate</h5>
+                    <p class="card-text small opacity-75">Swahili houses feature roof-level terraces to capture high coastal breezes, while narrow winding streets are deliberately designed to provide maximum daytime shading.</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 mt-auto">
-        <div class="container">
-            <p class="mb-1">&copy; 2026 ArchKenya. Exploring the spatial identities of Kenya.</p>
-            <p class="small text-muted mb-0">Built as a Web Application Development Assignment.</p>
-        </div>
-    </footer>
+       
 
     <button id="back-to-top" title="Go to top">↑</button>
 
