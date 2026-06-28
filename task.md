@@ -1,0 +1,35 @@
+# Tasks
+
+- [x] Commit 1: Introduce custom global styling and typography
+- [x] Commit 2: Create an Interactive Quiz Page (quiz.html) and script.js base
+- [x] Commit 3: Fix layout errors and cleanup workspace (delete test.html)
+- [x] Commit 4: Add Modernism & Beyond page (modernism.html)
+- [x] Commit 5: Create Nairobi Spotlight page with category filtering layout
+- [x] Commit 6: Add JavaScript filtering logic for Nairobi Spotlight gallery
+- [x] Commit 7: Create Submit Landmark page (document-landmark.html) with form layout
+- [x] Commit 8: Implement form validation and feedback modal
+- [x] Commit 19: Change navbar and dropdown menu color scheme to black and white
+- [x] Commit 20: Apply black and white design system styling to cards and page bodies
+- [x] Commit 21: Add interactive scroll to top button with fade transitions
+- [x] Commit 22: Add Back to Top button markup in index.html
+- [x] Commit 23: Add Back to Top button markup in timeline.html
+- [x] Commit 24: Add Back to Top button markup to all remaining pages
+- [x] Commit 25: Restructure timeline layout to fix alignment and prepare columns
+- [x] Commit 26: Fix duplicate layout adjustment
+- [x] Commit 27: Add architectural images to assets folder for timeline
+- [x] Commit 28: Fix Bootstrap link typo on Indigenous spaces page navbar
+- [x] Commit 29: Restructure Indigenous spaces page layout to flow downwards
+- [x] Commit 30: Add Luo and Rendille variations with media layout to Indigenous page
+- [x] Commit 31: Update Rendille image source, set header to black, remove logo, and adjust navbar alignment
+- [x] Commit 32: Restructure Swahili coastal page content layout and navbar styling
+- [x] Commit 33: Add Gede, Siyu, Takwa landmarks, set Mombasa image, and increase image size
+- [x] Commit 34: Restructure Colonial heritage page layout and add 4th landmark section
+- [x] Commit 35: Update Nairobi Gallery image source and set navbar background to dark green
+- [x] Commit 36: Change Colonial page navbar and header backgrounds to orange
+- [x] Commit 37: Restructure Modernism layout, set correct images, resize, and set header to black
+- [x] Commit 38: Place all page headers in all-caps above the thin black navbars
+- [x] Commit 39: Expand Nairobi Spotlight to 9 landmarks per genre and delete Submit Landmark page
+- [x] Commit 40: Add Previous Question back-navigation support to the quiz
+- [x] Commit 41: Add Clear Choice support to the quiz
+- [x] Commit 42: Defer correct answer highlights and explanations to end-of-quiz review
+- [x] Commit 43: Remove rank feedback text and results screen emoji from the quiz

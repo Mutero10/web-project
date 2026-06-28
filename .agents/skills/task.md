@@ -1,0 +1,30 @@
+# Tasks
+
+- [x] Commit 1: Introduce custom global styling and typography
+- [x] Commit 2: Create an Interactive Quiz Page (quiz.html) and script.js base
+- [x] Commit 3: Fix layout errors and cleanup workspace (delete test.html)
+- [x] Commit 4: Add Modernism & Beyond page (modernism.html)
+- [x] Commit 5: Create Nairobi Spotlight page with category filtering layout
+- [x] Commit 6: Add JavaScript filtering logic for Nairobi Spotlight gallery
+- [x] Commit 7: Create Submit Landmark page (document-landmark.html) with form layout
+- [x] Commit 8: Implement form validation and feedback modal
+- [x] Commit 19: Change navbar and dropdown menu color scheme to black and white
+- [x] Commit 20: Apply black and white design system styling to cards and page bodies
+- [x] Commit 21: Add interactive scroll to top button with fade transitions
+- [x] Commit 22: Add Back to Top button markup in index.html
+- [x] Commit 23: Add Back to Top button markup in timeline.html
+- [x] Commit 24: Add Back to Top button markup to all remaining pages
+- [x] Commit 25: Restructure timeline layout to fix alignment and prepare columns
+- [x] Commit 26: Fix duplicate layout adjustment
+- [x] Commit 27: Add architectural images to assets folder for timeline
+- [x] Commit 28: Fix Bootstrap link typo on Indigenous spaces page navbar
+- [x] Commit 29: Restructure Indigenous spaces page layout to flow downwards
+- [x] Commit 30: Add Luo and Rendille variations with media layout to Indigenous page
+- [/] Commit 31: Update Rendille image source, set header to black, remove logo, and adjust navbar alignment
+- [ ] Commit 32: Create and link custom SVG favicon for the website
+- [ ] Commit 33: Add SEO meta tags and Open Graph descriptions for Home and Timeline pages
+- [ ] Commit 34: Add SEO meta tags and Open Graph descriptions for architectural era pages
+- [ ] Commit 35: Add SEO meta tags and Open Graph descriptions for Spotlight, Submit, and Quiz pages
+- [ ] Commit 36: Add custom CSS transitions and animations for mobile navigation burger menu
+- [ ] Commit 37: Enhance Nairobi Spotlight search with dynamic result count feedback
+- [ ] Commit 38: Create custom black and white 404 error page
